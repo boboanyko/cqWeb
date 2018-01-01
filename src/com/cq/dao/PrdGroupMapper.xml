@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.dao.PrdGroupMapper">
+  <resultMap id="BaseResultMap" type="com.cq.model.PrdGroup">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="group_name_en" jdbcType="VARCHAR" property="groupNameEn" />
+    <result column="group_icon_name" jdbcType="VARCHAR" property="groupIconName" />
+    <result column="group_pic_path" jdbcType="VARCHAR" property="groupPicPath" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="modfy_user" jdbcType="VARCHAR" property="modfyUser" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+    <result column="group_code" jdbcType="VARCHAR" property="groupCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, group_name, group_name_en, group_icon_name, group_pic_path, create_date, create_user, 
+    modify_date, modfy_user, del_flag, group_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_prd_group
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_prd_group
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cq.model.PrdGroup">
+    insert into t_prd_group (id, group_name, group_name_en, 
+      group_icon_name, group_pic_path, create_date, 
+      create_user, modify_date, modfy_user, 
+      del_flag, group_code)
+    values (#{id,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{groupNameEn,jdbcType=VARCHAR}, 
+      #{groupIconName,jdbcType=VARCHAR}, #{groupPicPath,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, #{modfyUser,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=VARCHAR}, #{groupCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cq.model.PrdGroup">
+    insert into t_prd_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+      <if test="groupNameEn != null">
+        group_name_en,
+      </if>
+      <if test="groupIconName != null">
+        group_icon_name,
+      </if>
+      <if test="groupPicPath != null">
+        group_pic_path,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="modfyUser != null">
+        modfy_user,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="groupCode != null">
+        group_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupNameEn != null">
+        #{groupNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="groupIconName != null">
+        #{groupIconName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPicPath != null">
+        #{groupPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modfyUser != null">
+        #{modfyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null">
+        #{groupCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cq.model.PrdGroup">
+    update t_prd_group
+    <set>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupNameEn != null">
+        group_name_en = #{groupNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="groupIconName != null">
+        group_icon_name = #{groupIconName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPicPath != null">
+        group_pic_path = #{groupPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modfyUser != null">
+        modfy_user = #{modfyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null">
+        group_code = #{groupCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cq.model.PrdGroup">
+    update t_prd_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      group_name_en = #{groupNameEn,jdbcType=VARCHAR},
+      group_icon_name = #{groupIconName,jdbcType=VARCHAR},
+      group_pic_path = #{groupPicPath,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      modfy_user = #{modfyUser,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=VARCHAR},
+      group_code = #{groupCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 读取数据库连接信息的属性文件
+	<properties resource="jdbc.properties" /> -->
+	<!-- 给实体对象取另名 -->
+	<typeAliases>
+		<package name="com.cq.model"/>
+	</typeAliases>
+	
+	<!-- 对事务的管理和连接池的配置 SSM整合时，此配置要放到Spring配置文件去
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments> -->
+	<!-- mapping 文件路径配置  SSM整合时，此配置要放到Spring配置文件去
+	<mappers>
+		<mapper resource="com/etc/mappers/UserMapper.xml" />
+	</mappers> -->
+</configuration>

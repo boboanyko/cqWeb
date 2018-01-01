@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>cqWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/view/index.html</welcome-file>
+  </welcome-file-list>
+  <!-- SpringMVC配置 -->
+  <servlet>
+     <servlet-name>springMVC</servlet-name>
+     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+     <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:config/springMVC-servlet.xml</param-value>
+     </init-param>
+     <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>springMVC</servlet-name>
+     <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- spring  通过ContextLoaderListener 监听器来创建 IOC容器         执行顺序：监听器->过滤器->servlet  -->
+  <!-- 配置spring配置文件 路径 -->
+  <context-param>
+     <param-name>contextConfigLocation</param-name>
+     <param-value>classpath:config/applicationcontext.xml</param-value>
+  </context-param>
+  <!-- 应用程序启动则创建了IOC容器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+</web-app>
