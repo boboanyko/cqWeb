@@ -1,3 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"  %>  
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>prj2</title><link href=/css/app.5a709d2f988f3f6ef99233338a27cc87.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/js/manifest.c1db76f1de47e35f7104.js></script><script type=text/javascript src=/js/vendor.5ea047ae0e227282c773.js></script><script type=text/javascript src=/js/app.f1f05cc2456635a4073c.js></script></body></html>
-</html>
