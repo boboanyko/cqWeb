@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cq.dao.CqPrdMapper" >
+  <resultMap id="BaseResultMap" type="com.cq.model.CqPrd" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="prd_name" property="prdName" jdbcType="VARCHAR" />
+    <result column="prd_type" property="prdType" jdbcType="VARCHAR" />
+    <result column="prd_price" property="prdPrice" jdbcType="DECIMAL" />
+    <result column="prd_rate" property="prdRate" jdbcType="VARCHAR" />
+    <result column="prd_desc" property="prdDesc" jdbcType="VARCHAR" />
+    <result column="prd_head_pic_path" property="prdHeadPicPath" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="modfy_user" property="modfyUser" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_id, prd_name, prd_type, prd_price, prd_rate, prd_desc, prd_head_pic_path, 
+    create_date, create_user, modify_date, modfy_user, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cq_prd
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_cq_prd
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cq.model.CqPrd" >
+    insert into t_cq_prd (id, group_id, prd_name, 
+      prd_type, prd_price, prd_rate, 
+      prd_desc, prd_head_pic_path, create_date, 
+      create_user, modify_date, modfy_user, 
+      del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{prdName,jdbcType=VARCHAR}, 
+      #{prdType,jdbcType=VARCHAR}, #{prdPrice,jdbcType=DECIMAL}, #{prdRate,jdbcType=VARCHAR}, 
+      #{prdDesc,jdbcType=VARCHAR}, #{prdHeadPicPath,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, #{modfyUser,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cq.model.CqPrd" >
+    insert into t_cq_prd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="prdName != null" >
+        prd_name,
+      </if>
+      <if test="prdType != null" >
+        prd_type,
+      </if>
+      <if test="prdPrice != null" >
+        prd_price,
+      </if>
+      <if test="prdRate != null" >
+        prd_rate,
+      </if>
+      <if test="prdDesc != null" >
+        prd_desc,
+      </if>
+      <if test="prdHeadPicPath != null" >
+        prd_head_pic_path,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="modfyUser != null" >
+        modfy_user,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="prdName != null" >
+        #{prdName,jdbcType=VARCHAR},
+      </if>
+      <if test="prdType != null" >
+        #{prdType,jdbcType=VARCHAR},
+      </if>
+      <if test="prdPrice != null" >
+        #{prdPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="prdRate != null" >
+        #{prdRate,jdbcType=VARCHAR},
+      </if>
+      <if test="prdDesc != null" >
+        #{prdDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="prdHeadPicPath != null" >
+        #{prdHeadPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modfyUser != null" >
+        #{modfyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cq.model.CqPrd" >
+    update t_cq_prd
+    <set >
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="prdName != null" >
+        prd_name = #{prdName,jdbcType=VARCHAR},
+      </if>
+      <if test="prdType != null" >
+        prd_type = #{prdType,jdbcType=VARCHAR},
+      </if>
+      <if test="prdPrice != null" >
+        prd_price = #{prdPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="prdRate != null" >
+        prd_rate = #{prdRate,jdbcType=VARCHAR},
+      </if>
+      <if test="prdDesc != null" >
+        prd_desc = #{prdDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="prdHeadPicPath != null" >
+        prd_head_pic_path = #{prdHeadPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modfyUser != null" >
+        modfy_user = #{modfyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cq.model.CqPrd" >
+    update t_cq_prd
+    set group_id = #{groupId,jdbcType=VARCHAR},
+      prd_name = #{prdName,jdbcType=VARCHAR},
+      prd_type = #{prdType,jdbcType=VARCHAR},
+      prd_price = #{prdPrice,jdbcType=DECIMAL},
+      prd_rate = #{prdRate,jdbcType=VARCHAR},
+      prd_desc = #{prdDesc,jdbcType=VARCHAR},
+      prd_head_pic_path = #{prdHeadPicPath,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      modfy_user = #{modfyUser,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getPrdList" resultMap="BaseResultMap">
+  	select * from t_cq_prd
+  </select>
+</mapper>

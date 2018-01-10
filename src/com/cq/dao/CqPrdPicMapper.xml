@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cq.dao.CqPrdPicMapper" >
+  <resultMap id="BaseResultMap" type="com.cq.model.CqPrdPic" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="prd_id" property="prdId" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="prd_pic_path" property="prdPicPath" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_usr" property="createUsr" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, prd_id, group_id, prd_pic_path, create_date, create_usr, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cq_prd_pic
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_cq_prd_pic
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cq.model.CqPrdPic" >
+    insert into t_cq_prd_pic (id, prd_id, group_id, 
+      prd_pic_path, create_date, create_usr, 
+      del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{prdId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, 
+      #{prdPicPath,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createUsr,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cq.model.CqPrdPic" >
+    insert into t_cq_prd_pic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="prdId != null" >
+        prd_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="prdPicPath != null" >
+        prd_pic_path,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createUsr != null" >
+        create_usr,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="prdId != null" >
+        #{prdId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="prdPicPath != null" >
+        #{prdPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUsr != null" >
+        #{createUsr,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cq.model.CqPrdPic" >
+    update t_cq_prd_pic
+    <set >
+      <if test="prdId != null" >
+        prd_id = #{prdId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="prdPicPath != null" >
+        prd_pic_path = #{prdPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUsr != null" >
+        create_usr = #{createUsr,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cq.model.CqPrdPic" >
+    update t_cq_prd_pic
+    set prd_id = #{prdId,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      prd_pic_path = #{prdPicPath,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_usr = #{createUsr,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <sql id="getPrdPicList_Column_List" >
+    cpp.id, cpp.prd_id, cpp.prd_pic_path
+  </sql>
+  
+  <resultMap id="getPrdPicListResultMap" type="map" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="prd_id" property="prdId" jdbcType="VARCHAR" />
+    <result column="prd_pic_path" property="prdPicPath" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="getPrdPicList" resultMap="getPrdPicListResultMap" parameterType="string">
+  	select 
+	<include refid="getPrdPicList_Column_List" />	 
+	from t_cq_prd_pic cpp 
+	where 1=1 
+  	and cpp.prd_id = #{prdId,jdbcType=VARCHAR}
+  </select>
+</mapper>

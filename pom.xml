@@ -187,7 +187,7 @@
         </dependency>  
         <!-- log end -->  
         <!-- 映入JSON -->  
-    <span style="color:#ff0000;"> <dependency>  
+    	<dependency>  
             <groupId>com.fasterxml.jackson.core</groupId>  
             <artifactId>jackson-databind</artifactId>  
             <version>${jackson.version}</version>  
@@ -201,7 +201,17 @@
             <groupId>com.fasterxml.jackson.core</groupId>  
             <artifactId>jackson-core</artifactId>  
             <version>${jackson.version}</version>  
-        </dependency></span>  
+        </dependency>
+        <dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
         <!-- 上传组件包 -->  
         <dependency>  
             <groupId>commons-fileupload</groupId>  

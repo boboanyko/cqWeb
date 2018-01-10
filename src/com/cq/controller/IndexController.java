@@ -11,7 +11,7 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public ModelAndView defaultIndex(Model model){
-		ModelAndView mv = new ModelAndView("/pages/index");
+		ModelAndView mv = new ModelAndView("/index");
 		return mv;
 	}
 		
