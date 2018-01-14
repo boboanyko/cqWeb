@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cq.dao.CqPrdFilmMapper" >
+  <resultMap id="BaseResultMap" type="com.cq.model.CqPrdFilm" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="prd_id" property="prdId" jdbcType="VARCHAR" />
+    <result column="film_name" property="filmName" jdbcType="VARCHAR" />
+    <result column="film_desc" property="filmDesc" jdbcType="VARCHAR" />
+    <result column="film_path" property="filmPath" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, prd_id, film_name, film_desc, film_path, create_date, create_user, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cq_prd_film
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_cq_prd_film
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cq.model.CqPrdFilm" >
+    insert into t_cq_prd_film (id, prd_id, film_name, 
+      film_desc, film_path, create_date, 
+      create_user, del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{prdId,jdbcType=VARCHAR}, #{filmName,jdbcType=VARCHAR}, 
+      #{filmDesc,jdbcType=VARCHAR}, #{filmPath,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{delFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cq.model.CqPrdFilm" >
+    insert into t_cq_prd_film
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="prdId != null" >
+        prd_id,
+      </if>
+      <if test="filmName != null" >
+        film_name,
+      </if>
+      <if test="filmDesc != null" >
+        film_desc,
+      </if>
+      <if test="filmPath != null" >
+        film_path,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="prdId != null" >
+        #{prdId,jdbcType=VARCHAR},
+      </if>
+      <if test="filmName != null" >
+        #{filmName,jdbcType=VARCHAR},
+      </if>
+      <if test="filmDesc != null" >
+        #{filmDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="filmPath != null" >
+        #{filmPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cq.model.CqPrdFilm" >
+    update t_cq_prd_film
+    <set >
+      <if test="prdId != null" >
+        prd_id = #{prdId,jdbcType=VARCHAR},
+      </if>
+      <if test="filmName != null" >
+        film_name = #{filmName,jdbcType=VARCHAR},
+      </if>
+      <if test="filmDesc != null" >
+        film_desc = #{filmDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="filmPath != null" >
+        film_path = #{filmPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cq.model.CqPrdFilm" >
+    update t_cq_prd_film
+    set prd_id = #{prdId,jdbcType=VARCHAR},
+      film_name = #{filmName,jdbcType=VARCHAR},
+      film_desc = #{filmDesc,jdbcType=VARCHAR},
+      film_path = #{filmPath,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  <select id="getPrdFilmList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_cq_prd_film
+  </select>
+</mapper>
